@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BulkyBookWeb.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -95,13 +96,13 @@ namespace BulkyBookWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePOST(int? id)
         {
-            var categoryFromDb = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
-            if (categoryFromDb == null)
+            var obj = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
+            if (obj == null)
             {
                 return NotFound();
             }
-            _unitOfWork.Category.Remove(categoryFromDb);
-            _unitOfWork.Save();
+            _unitOfWork.Category.Remove(obj);
+                _unitOfWork.Save();
             TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index");
             

@@ -15,7 +15,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">BulkyBooks</a>
+    <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Index">BulkyBooks</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,10 +28,10 @@
           </a>
         </li>*@
         <li class="nav-item">
-          <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+          <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
+          <a class="nav-link text-dark" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
         </li>
  @*       <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -62,7 +62,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - BulkyBookWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - BulkyBookWeb - <a asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
