@@ -14,11 +14,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Areas\Admin\Controllers\CoverTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Customer\Controllers\HomeController.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\CoverType\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CoverType\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CoverType\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CoverType\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
