@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\CoverTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Customer\Controllers\HomeController.cs" />
@@ -63,6 +64,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BulkyBook.DataAccess\BulkyBook.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Product\Upsert.cshtml" />
   </ItemGroup>
 
 </Project>
