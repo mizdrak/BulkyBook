@@ -71,4 +71,8 @@
     <None Include="Areas\Admin\Views\Product\Upsert.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\products\" />
+  </ItemGroup>
+
 </Project>
