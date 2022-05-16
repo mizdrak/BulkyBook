@@ -14,7 +14,6 @@ using System.Linq;
 
 namespace BulkyBookWeb.Controllers;
 [Area("Admin")]
-
 public class ProductController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
@@ -92,7 +91,6 @@ public class ProductController : Controller
                     }
                 }
 
-
                 using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                 {
                     file.CopyTo(fileStreams);
@@ -114,37 +112,26 @@ public class ProductController : Controller
         }
         return View(obj);
     }
-    //// Get 
-    //public IActionResult Delete(int? id)
-    //    {
-    //        if (id == null || id == 0)
-    //        {
-    //            return NotFound();
-    //        }
-    //        var CoverTypeFromDb = _unitOfWork.CoverType.GetFirstOrDefault(u => u.Id == id);
-    //        if (CoverTypeFromDb == null)
-    //        {
-    //            return NotFound();
-    //        }
-    //        return View(CoverTypeFromDb);
-    //    }
-        
-        #region API CALLS
-        [HttpGet]
-        public IActionResult GetAll()
+
+
+
+    #region API CALLS
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        var productList = _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType");
+        return Json(new { data = productList });
+    }
+
+    //POST
+    [HttpDelete]
+    public IActionResult Delete(int? id)
+    {
+        var obj = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
+        if (obj == null)
         {
-            var productList = _unitOfWork.Product.GetAll(includeProperties:"Category,CoverType");
-            return Json(new { data = productList });
-        }
-        //  Post
-        [HttpDelete]
-        public IActionResult Delete(int? id)
-        {
-            var obj = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
-            if (obj == null)
-            {
             return Json(new { success = false, message = "Error while deleting" });
-            }
+        }
 
         var oldImagePath = Path.Combine(_hostEnvironment.WebRootPath, obj.ImageUrl.TrimStart('\\'));
         if (System.IO.File.Exists(oldImagePath))
@@ -153,14 +140,9 @@ public class ProductController : Controller
         }
 
         _unitOfWork.Product.Remove(obj);
-            _unitOfWork.Save();
+        _unitOfWork.Save();
         return Json(new { success = true, message = "Delete Successful" });
-        
 
-
-
-        }
-        #endregion
     }
-
-
+    #endregion
+}
