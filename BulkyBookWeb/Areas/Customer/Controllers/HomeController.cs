@@ -19,7 +19,8 @@ namespace BulkyBookWeb.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Product> ListOfProduct = _unitOfWork.Product.GetAll(includeProperties:"Category,CoverType");
+            return View(ListOfProduct);
         }
 
         public IActionResult Privacy()
